@@ -1,2 +1,0 @@
-# diputacionesgdl
-Analisis
