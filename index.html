@@ -7,15 +7,15 @@
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
-  --border:rgba(140,180,240,0.12);
-  --text-pri:#e8f0ff; --text-sec:#8fa3c7; --text-tri:#5a6b8a;
-  --gold:#ffb13b; --green:#2dffaa; --red:#ff2d4f; --cyan:#00f0ff; --purple:#b14eff;
-  --b1:#e83030; --b2:#ff8c00; --b3:#2266cc;
+ --border:rgba(140,180,240,0.12);
+ --text-pri:#e8f0ff; --text-sec:#8fa3c7; --text-tri:#5a6b8a;
+ --gold:#ffb13b; --green:#2dffaa; --red:#ff2d4f; --cyan:#00f0ff; --purple:#b14eff;
+ --b1:#e83030; --b2:#ff8c00; --b3:#2266cc;
 }
 body {
-  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
-  background:linear-gradient(180deg,#050810 0%,#0a0e1a 50%,#050810 100%);
-  background-attachment:fixed; color:var(--text-pri); min-height:100vh; padding:14px; font-size:13px;
+ font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+ background:linear-gradient(180deg,#050810 0%,#0a0e1a 50%,#050810 100%);
+ background-attachment:fixed; color:var(--text-pri); min-height:100vh; padding:14px; font-size:13px;
 }
 .container{max-width:1400px;margin:0 auto;}
 .header{background:linear-gradient(135deg,rgba(0,240,255,0.06),rgba(255,177,59,0.04));border:1px solid rgba(0,240,255,0.2);border-radius:10px;padding:16px 20px;margin-bottom:14px;position:relative;overflow:hidden;}
@@ -105,12 +105,12 @@ body {
 .scen-table tr:hover td{background:rgba(0,240,255,0.03);}
 .scen-table .win{font-weight:800;}
 .party-indiv-card{
-  flex:1;min-width:130px;max-width:200px;padding:12px 14px;
-  background:rgba(5,8,16,0.7);border-radius:6px;border:2px solid transparent;
-  position:relative;overflow:hidden;
+ flex:1;min-width:130px;max-width:200px;padding:12px 14px;
+ background:rgba(5,8,16,0.7);border-radius:6px;border:2px solid transparent;
+ position:relative;overflow:hidden;
 }
 .party-indiv-card .rank{
-  position:absolute;top:8px;right:10px;font-size:9px;color:var(--text-tri);font-weight:700;
+ position:absolute;top:8px;right:10px;font-size:9px;color:var(--text-tri);font-weight:700;
 }
 .party-indiv-card .p-name{font-size:11px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;margin-bottom:4px;}
 .party-indiv-card .p-pct{font-size:22px;font-weight:800;line-height:1;}
@@ -157,10 +157,15 @@ body {
       <label>Distrito</label>
       <select id="filter-district"><option value="all">Todos los 20 distritos</option></select>
     </div>
+  
+  <div style="margin-top:10px;">
+    <button onclick="downloadXLS()" style="padding:7px 16px;background:rgba(0,240,255,0.08);color:var(--cyan);border:1px solid rgba(0,240,255,0.3);border-radius:5px;cursor:pointer;font-family:inherit;font-size:11px;font-weight:700;letter-spacing:.5px;">
+      ⬇ Descargar datos .xlsx
+    </button>
   </div>
 </div>
+</div>
 
-<!-- ANÁLISIS POR PARTIDO INDIVIDUAL -->
 <div class="panel" id="party-kpi-panel">
   <div style="margin-bottom:10px;">
     <div style="font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--cyan);">Análisis por Partido Individual</div>
@@ -169,7 +174,6 @@ body {
   <div id="party-indiv-row" style="display:flex;flex-wrap:wrap;gap:8px;"></div>
 </div>
 
-<!-- CONSTRUCTOR PRINCIPAL -->
 <div class="block-builder">
   <div class="bb-title">▶ Constructor de Bloques Principal · También define Tabla A</div>
   <div class="bb-sub">Arrastra los partidos. Afecta KPIs, gráfica histórica y la Tabla A de escenarios.</div>
@@ -186,7 +190,6 @@ body {
   </div>
 </div>
 
-<!-- HISTÓRICA -->
 <div class="panel">
   <div class="panel-header">
     <div><div class="panel-title">Comparativa Histórica · 2018 · 2021 · 2024</div><div class="panel-sub">Sigue filtro de distrito · Barras agrupadas por año</div></div>
@@ -200,13 +203,12 @@ body {
   <div class="chart-wrap"><canvas id="hist-canvas"></canvas></div>
 </div>
 
-<!-- ESCENARIOS -->
 <div class="panel">
   <div class="panel-header">
     <div><div class="panel-title">Comparativa de Escenarios</div><div class="panel-sub">Tabla A usa bloques del constructor principal · Tabla B tiene constructor independiente de 4 bloques</div></div>
   </div>
 
-  <!-- TABLA POR PARTIDO (única, arriba) -->
+  
   <div style="font-size:9px;color:var(--text-tri);letter-spacing:1px;text-transform:uppercase;margin-bottom:6px;">▸ Votos por Partido · Por Distrito</div>
   <div style="overflow-x:auto;margin-bottom:18px;">
     <table class="scen-table" id="party-table-main" style="min-width:600px;">
@@ -216,7 +218,7 @@ body {
   </div>
 
   <div class="scenarios-container">
-    <!-- TABLA A -->
+    
     <div class="scen-card" style="border-color:rgba(177,78,255,0.35);">
       <div class="scen-card-title" style="color:var(--purple);">🅐 Tabla A <span style="font-size:9px;font-weight:400;color:var(--text-sec);">← usa bloques del constructor principal</span></div>
       <div id="scen-a-preview" style="display:flex;gap:5px;flex-wrap:wrap;margin-bottom:10px;min-height:24px;"></div>
@@ -226,7 +228,7 @@ body {
       </table>
     </div>
 
-    <!-- TABLA B -->
+    
     <div class="scen-card" style="border-color:rgba(0,240,255,0.35);">
       <div class="scen-card-title" style="color:var(--cyan);">🅑 <input class="scen-name" id="scen-name-b" value="Tabla B" style="color:var(--cyan);border-bottom-color:var(--cyan);"></div>
       <div class="mini-builder">
@@ -268,7 +270,6 @@ body {
   </div>
 </div>
 
-<!-- GRÁFICA COMPARATIVA A vs B POR AÑO -->
 <div class="panel">
   <div class="panel-header">
     <div>
@@ -288,7 +289,7 @@ body {
     <canvas id="comp-canvas"></canvas>
   </div>
 </div>
-<!-- DIPUTADOS GANADORES POR DISTRITO -->
+
 <div class="panel">
   <div class="panel-header">
     <div>
@@ -298,14 +299,7 @@ body {
   </div>
   <div style="overflow-x:auto;">
     <table class="scen-table" id="dip-table" style="min-width:700px;">
-      <thead>
-        <tr>
-          <th style="width:60px;">DTTO</th>
-          <th style="color:#888;">2018 · LXII Legislatura</th>
-          <th style="color:#aaa;">2021 · LXIII Legislatura</th>
-          <th style="color:var(--gold);">2024 · LXIV Legislatura</th>
-        </tr>
-      </thead>
+      <thead id="dip-thead"></thead>
       <tbody id="dip-tbody"></tbody>
     </table>
   </div>
@@ -313,6 +307,7 @@ body {
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 <script>
 // DIPUTADOS DATA — mayoría relativa por distrito
 const DIPS={
@@ -465,8 +460,24 @@ const getDist=()=>document.getElementById('filter-district').value;
 const filtRows=()=>D.filter(r=>(getY()=='all'||r.y==+getY())&&(getDist()=='all'||r.d==+getDist()));
 const yearRows=y=>D.filter(r=>r.y==y);
 const dList=y=>{const src=y?yearRows(y):D;return[...new Set(src.map(r=>r.d))].sort((a,b)=>a-b);}
-const partiesFor=y=>{const b=['PAN','PRI','PRD','PVEM','PT','MC','MORENA'];if(y=='all'||y==2018)b.push('PES');if(y=='all'||y==2021||y==2024){b.push('HAGAMOS');b.push('FUTURO');}return b;};
+const ALL_PARTIES=['PAN','PRI','PRD','PVEM','PT','MC','MORENA','HAGAMOS','FUTURO','PES'];
+const partiesFor=y=>{
+  const b=['PAN','PRI','PRD','PVEM','PT','MC','MORENA'];
+  if(y=='all'||y==2018)b.push('PES');
+  if(y=='all'||y==2021||y==2024){b.push('HAGAMOS');b.push('FUTURO');}
+  return b;
+};
 
+// POOL A — NUNCA borra partidos de los bloques; solo controla qué aparece en el pool
+function rebuildPoolA(){
+  const y=getY();const pts=partiesFor(y=='all'?'all':+y);
+  const inB=[].concat(blocks[1],blocks[2],blocks[3]);
+  const pool=document.getElementById('pool-a');
+  const lbl=pool.querySelector('.pool-label');pool.innerHTML='';
+  pool.appendChild(lbl||Object.assign(document.createElement('span'),{className:'pool-label',textContent:'Partidos sin asignar'}));
+  // Solo mostrar en pool los que: existen en este año Y no están en ningún bloque
+  pts.forEach(p=>{if(!inB.includes(p))pool.appendChild(mkChip(p,'pool-a',false));});
+}
 // INIT
 (()=>{
   const s=document.getElementById('filter-district');
@@ -490,26 +501,14 @@ function mkChip(p,ctx,isB){
   c.addEventListener('dragend',()=>c.classList.remove('drag'));
   return c;
 }
-
-// POOL A
-function rebuildPoolA(){
-  const y=getY();const pts=partiesFor(y=='all'?'all':+y);
-  for(let b=1;b<=3;b++)blocks[b]=blocks[b].filter(p=>pts.includes(p));
-  const inB=[].concat(blocks[1],blocks[2],blocks[3]);
-  const pool=document.getElementById('pool-a');
-  const lbl=pool.querySelector('.pool-label');pool.innerHTML='';
-  pool.appendChild(lbl||Object.assign(document.createElement('span'),{className:'pool-label',textContent:'Partidos sin asignar'}));
-  pts.forEach(p=>{if(!inB.includes(p))pool.appendChild(mkChip(p,'pool-a',false));});
-}
 function renderBlocksA(){
   for(let b=1;b<=3;b++){const z=document.getElementById('zone-'+b);z.querySelectorAll('.party-chip').forEach(c=>c.remove());blocks[b].forEach(p=>z.appendChild(mkChip(p,String(b),false)));}
 }
 function removeA(p,ctx){const b=+ctx;blocks[b]=blocks[b].filter(x=>x!==p);renderBlocksA();rebuildPoolA();refresh();}
 
-// POOL B (4 bloques)
+// POOL B — NUNCA borra partidos de los bloques; solo controla qué aparece en el pool
 function rebuildPoolB(){
   const y=getY();const pts=partiesFor(y=='all'?'all':+y);
-  for(let b=1;b<=4;b++)blocksB[b]=(blocksB[b]||[]).filter(p=>pts.includes(p));
   const inB=[].concat(blocksB[1],blocksB[2],blocksB[3],blocksB[4]);
   const pool=document.getElementById('pool-b');
   const lbl=pool.querySelector('.pool-label');pool.innerHTML='';
@@ -764,7 +763,12 @@ function renderPartyTable(){
   const totals={};pts.forEach(p=>totals[p]=0);let totVentaja=0;
   rowData.forEach(({d,tot,pv,mx,winner,ventaja,ventajaPct})=>{
     pts.forEach(p=>totals[p]+=(pv[p]||0)); totVentaja+=ventaja;
-    const row=document.createElement('tr');let c=`<td>${String(d).padStart(2,'0')}</td>`;
+    const row=document.createElement('tr');
+    row.style.cursor='pointer';
+    row.addEventListener('click',()=>selectDistrict(d));
+    row.addEventListener('mouseenter',()=>row.style.background='rgba(0,240,255,0.05)');
+    row.addEventListener('mouseleave',()=>row.style.background='');
+    let c=`<td>${String(d).padStart(2,'0')}</td>`;
     pts.forEach(p=>{
       const v=pv[p]||0,pct=tot?(v/tot*100).toFixed(1):0,isW=p===winner;
       c+=`<td class="${isW?'win':''}" style="color:${isW?PC[p]:'var(--text-sec)'}">${fmt(v)}<br><span style="font-size:9px;opacity:.7">${pct}%</span></td>`;
@@ -907,21 +911,29 @@ function renderTableA(){
     return `<th style="cursor:pointer;user-select:none;${active?'color:var(--gold)':''}" onclick="toggleSort('${side}','${col}')">${label} <span style="font-size:8px;opacity:.7">${arrow}</span></th>`;
   };
   headTr.innerHTML=mkTh('DTTO','dtto','a');
-  [1,2,3].forEach((b,i)=>{const nm=document.getElementById('block-name-'+b).value||'B'+b;headTr.innerHTML+=`<th style="color:${BC[i]}">${nm}</th>`;});
+  [1,2,3].forEach((b,i)=>{
+    const parties=blocks[b].map(p=>PL[p]||p).join('+');
+    const label=parties||'(vacío)';
+    headTr.innerHTML+=`<th style="color:${BC[i]};max-width:120px;white-space:normal;font-size:9px;line-height:1.3">${label}</th>`;
+  });
   headTr.innerHTML+=mkTh('VENTAJA MORENA','ventaja','a')+'<th>GANADOR</th>';
 
   const tbody=document.querySelector('#scen-table-a tbody');tbody.innerHTML='';
   let tots=[0,0,0],totVentaja=0;
   rowData.forEach(({d,tot,bv,mx,wi,ventaja,ventajaPct})=>{
     bv.forEach((v,i)=>tots[i]+=v); totVentaja+=ventaja;
-    const tr=document.createElement('tr');let c=`<td>${String(d).padStart(2,'0')}</td>`;
+    const tr=document.createElement('tr');
+    tr.style.cursor='pointer';
+    tr.addEventListener('click',()=>selectDistrict(d));
+    tr.addEventListener('mouseenter',()=>tr.style.background='rgba(0,240,255,0.05)');
+    tr.addEventListener('mouseleave',()=>tr.style.background='');
+    let c=`<td>${String(d).padStart(2,'0')}</td>`;
     bv.forEach((v,i)=>{const p=tot?(v/tot*100).toFixed(1):0;c+=`<td class="${v===mx?'win':''}" style="${v===mx?'color:'+BC[i]:''}">${fmt(v)} <span style="font-size:9px;color:var(--text-tri)">${p}%</span></td>`;});
     const vColA=ventaja>=0?'var(--green)':'var(--red)';const vSignA=ventaja>=0?'+':'';
     c+=`<td style="color:${vColA};font-weight:700">${vSignA}${fmt(ventaja)}<br><span style="font-size:9px;opacity:.8">${vSignA}${ventajaPct}%</span></td>`;
     c+=`<td style="color:${BC[wi]};font-weight:800">✅ ${document.getElementById('block-name-'+(wi+1)).value||'B'+(wi+1)}</td>`;
     tr.innerHTML=c;tbody.appendChild(tr);
   });
-  // totals row
   const tr=document.createElement('tr');let c=`<td>TOTAL</td>`;
   const gt=tots.reduce((s,v)=>s+v,0);
   tots.forEach((v,i)=>{const p=gt?(v/gt*100).toFixed(1):0;c+=`<td style="color:${BC[i]}">${fmt(v)}·${p}%</td>`;});
@@ -965,14 +977,23 @@ function renderTableB(){
     return `<th style="cursor:pointer;user-select:none;${active?'color:var(--gold)':''}" onclick="toggleSort('${side}','${col}')">${label} <span style="font-size:8px;opacity:.7">${arrow}</span></th>`;
   };
   headTr.innerHTML=mkTh('DTTO','dtto','b');
-  [1,2,3,4].forEach((b,i)=>{const nm=document.getElementById('block-b-name-'+b).value||'B'+b;headTr.innerHTML+=`<th style="color:${BC4[i]}">${nm}</th>`;});
+  [1,2,3,4].forEach((b,i)=>{
+    const parties=(blocksB[b]||[]).map(p=>PL[p]||p).join('+');
+    const label=parties||'(vacío)';
+    headTr.innerHTML+=`<th style="color:${BC4[i]};max-width:120px;white-space:normal;font-size:9px;line-height:1.3">${label}</th>`;
+  });
   headTr.innerHTML+=mkTh('VENTAJA MORENA','ventaja','b')+'<th>GANADOR</th>';
 
   const tbody=document.querySelector('#scen-table-b tbody');tbody.innerHTML='';
   let tots=[0,0,0,0],totVentaja=0;
   rowData.forEach(({d,tot,bv,mx,wi,ventaja,ventajaPct})=>{
     bv.forEach((v,i)=>tots[i]+=v); totVentaja+=ventaja;
-    const tr=document.createElement('tr');let c=`<td>${String(d).padStart(2,'0')}</td>`;
+    const tr=document.createElement('tr');
+    tr.style.cursor='pointer';
+    tr.addEventListener('click',()=>selectDistrict(d));
+    tr.addEventListener('mouseenter',()=>tr.style.background='rgba(0,240,255,0.05)');
+    tr.addEventListener('mouseleave',()=>tr.style.background='');
+    let c=`<td>${String(d).padStart(2,'0')}</td>`;
     bv.forEach((v,i)=>{const p=tot?(v/tot*100).toFixed(1):0;c+=`<td class="${v===mx?'win':''}" style="${v===mx?'color:'+BC4[i]:''}">${fmt(v)} <span style="font-size:9px;color:var(--text-tri)">${p}%</span></td>`;});
     const vColB=ventaja>=0?'var(--green)':'var(--red)';const vSignB=ventaja>=0?'+':'';
     c+=`<td style="color:${vColB};font-weight:700">${vSignB}${fmt(ventaja)}<br><span style="font-size:9px;opacity:.8">${vSignB}${ventajaPct}%</span></td>`;
@@ -1003,8 +1024,8 @@ function toggleMerge(){
   if(mergeVisible)renderMerged();
 }
 function renderMerged(){
-  [1,2,3].forEach(b=>{const h=document.getElementById('mha'+b);if(h)h.textContent=document.getElementById('block-name-'+b).value||'A'+b;});
-  [1,2,3,4].forEach(b=>{const h=document.getElementById('mhb'+b);if(h)h.textContent=document.getElementById('block-b-name-'+b).value||'B'+b;});
+  [1,2,3].forEach(b=>{const h=document.getElementById('mha'+b);if(h)h.textContent=blocks[b].map(p=>PL[p]||p).join('+')||'(vacío)';});
+  [1,2,3,4].forEach(b=>{const h=document.getElementById('mhb'+b);if(h)h.textContent=(blocksB[b]||[]).map(p=>PL[p]||p).join('+')||'(vacío)';});
   const y=getY();const rows=y=='all'?D:D.filter(r=>r.y==+y);
   const ds=dList(y=='all'?null:+y);
   const tbody=document.querySelector('#merged-table tbody');tbody.innerHTML='';
@@ -1014,8 +1035,8 @@ function renderMerged(){
     const av=[1,2,3].map(b=>sumB(dr,blocks[b]));
     const bv=[1,2,3,4].map(b=>sumB(dr,blocksB[b]||[]));
     const wA=av.indexOf(Math.max(...av)),wB=bv.indexOf(Math.max(...bv));
-    const nmA=document.getElementById('block-name-'+(wA+1)).value||'A'+(wA+1);
-    const nmB=document.getElementById('block-b-name-'+(wB+1)).value||'B'+(wB+1);
+    const nmA=blocks[wA+1].map(p=>PL[p]||p).join('+')||'A'+(wA+1);
+    const nmB=(blocksB[wB+1]||[]).map(p=>PL[p]||p).join('+')||'B'+(wB+1);
     const ok=(wA===wB);if(ok)same++;else diff++;
     const tr=document.createElement('tr');let c=`<td>${String(d).padStart(2,'0')}</td>`;
     av.forEach((v,i)=>{const p=tot?(v/tot*100).toFixed(1):0;c+=`<td class="${i===wA?'win':''}" style="${i===wA?'color:'+BC[i]:''}">${fmt(v)}<br><span style="font-size:9px;color:var(--text-tri)">${p}%</span></td>`;});
@@ -1030,7 +1051,59 @@ function renderMerged(){
   tbody.appendChild(tr);
 }
 
-// NAME INPUTS
+// SELECT DISTRICT FROM TABLE ROW
+function selectDistrict(d){
+  const sel=document.getElementById('filter-district');
+  // Toggle: if already this district, reset to all
+  sel.value=(sel.value==String(d))?'all':String(d);
+  refresh();
+  // Scroll to top
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+// DIPUTADOS GANADORES TABLE — respeta filtro de año
+function renderDiputados(){
+  const tbody=document.getElementById('dip-tbody');
+  const thead=document.getElementById('dip-thead');
+  if(!tbody||!thead)return;
+  const y=getY();
+  const yrs=y=='all'?[2018,2021,2024]:[+y];
+
+  // Rebuild header based on active years
+  thead.innerHTML='<tr><th style="width:60px;cursor:pointer" onclick="selectDistrict(\'all\')">DTTO</th>'
+    +yrs.map(yr=>`<th style="color:${yr===2024?'var(--gold)':yr===2021?'#aaa':'#888'}">${yr}${yr===2024?' · LXIV':yr===2021?' · LXIII':' · LXII'}</th>`).join('')
+    +'</tr>';
+
+  tbody.innerHTML='';
+  for(let d=1;d<=20;d++){
+    const activeDist=getDist();
+    const isActive=activeDist==String(d);
+    const tr=document.createElement('tr');
+    tr.style.cursor='pointer';
+    tr.style.transition='background .15s';
+    if(isActive) tr.style.background='rgba(255,177,59,0.08)';
+    tr.addEventListener('click',()=>selectDistrict(d));
+    tr.addEventListener('mouseenter',()=>{if(!isActive)tr.style.background='rgba(0,240,255,0.05)';});
+    tr.addEventListener('mouseleave',()=>{if(!isActive)tr.style.background='';});
+
+    let c=`<td style="font-weight:800;color:${isActive?'var(--gold)':'var(--cyan)'};text-align:center">${String(d).padStart(2,'0')}${isActive?' ◀':''}</td>`;
+    yrs.forEach(yr=>{
+      const dip=DIPS[yr]?DIPS[yr][d]:null;
+      if(!dip){c+=`<td style="color:var(--text-tri);font-style:italic">—</td>`;return;}
+      const pColor=PC[dip.partido]||'#888';
+      c+=`<td style="background:${pColor}${yr===2024?'18':'0d'}">
+        <div style="display:flex;align-items:center;gap:6px;">
+          <span style="width:6px;height:6px;border-radius:50%;background:${pColor};flex-shrink:0;display:inline-block"></span>
+          <div>
+            <div style="font-weight:700;color:${pColor};font-size:10px">${dip.nombre}</div>
+            <div style="font-size:9px;color:${pColor};opacity:.7">${dip.partido}</div>
+          </div>
+        </div>
+      </td>`;
+    });
+    tr.innerHTML=c;tbody.appendChild(tr);
+  }
+}
 ['1','2','3'].forEach(b=>{
   document.getElementById('block-name-'+b).addEventListener('input',()=>{bNames[+b]=document.getElementById('block-name-'+b).value;refresh();renderCompChart();});
 });
@@ -1039,6 +1112,43 @@ function renderMerged(){
   if(el)el.addEventListener('input',()=>{bNamesB[+b]=el.value;refresh();renderCompChart();});
 });
 document.getElementById('scen-name-b').addEventListener('input',()=>{if(mergeVisible)renderMerged();});
+
+// DOWNLOAD XLS — generado dinámicamente con SheetJS desde los datos del dashboard
+function downloadXLS(){
+  if(typeof XLSX==='undefined'){alert('Cargando librería, intenta de nuevo en un momento');return;}
+  const wb=XLSX.utils.book_new();
+
+  // ── Hoja 1: Votos ──────────────────────────────────────────────────────────
+  const PARTIES=['PAN','PRI','PRD','PVEM','PT','MC','MORENA','PES','HAGAMOS','FUTURO'];
+  const h1=['AÑO','DTTO',...PARTIES,'NR+NULOS','TOTAL'];
+  const rows1=D.map(r=>{
+    const psum=PARTIES.reduce((s,p)=>s+(r[p]||0),0);
+    return[r.y,r.d,...PARTIES.map(p=>r[p]||0),r.T-psum,r.T];
+  });
+  // Totals per year
+  for(const y of[2018,2021,2024]){
+    const yr=D.filter(r=>r.y===y);
+    const pTots=PARTIES.map(p=>yr.reduce((s,r)=>s+(r[p]||0),0));
+    const psum=pTots.reduce((s,v)=>s+v,0);
+    const totT=yr.reduce((s,r)=>s+r.T,0);
+    rows1.push([y,'TOTAL',...pTots,totT-psum,totT]);
+  }
+  const ws1=XLSX.utils.aoa_to_sheet([h1,...rows1]);
+  ws1['!cols']=[{wch:8},{wch:8},...PARTIES.map(()=>({wch:12})),{wch:12},{wch:12}];
+  XLSX.utils.book_append_sheet(wb,ws1,'Votos por Año-Distrito');
+
+  // ── Hoja 2: Diputados ──────────────────────────────────────────────────────
+  const h2=['DTTO','2018 · Diputado/a','Partido 2018','2021 · Diputado/a','Partido 2021','2024 · Diputado/a','Partido 2024'];
+  const rows2=Array.from({length:20},(_,i)=>{
+    const d=i+1;
+    return[d,...[2018,2021,2024].flatMap(y=>DIPS[y]&&DIPS[y][d]?[DIPS[y][d].nombre,DIPS[y][d].partido]:['—','—'])];
+  });
+  const ws2=XLSX.utils.aoa_to_sheet([h2,...rows2]);
+  ws2['!cols']=[{wch:7},{wch:35},{wch:12},{wch:35},{wch:12},{wch:35},{wch:12}];
+  XLSX.utils.book_append_sheet(wb,ws2,'Diputados Electos');
+
+  XLSX.writeFile(wb,'datos_electorales_jalisco.xlsx');
+}
 
 // BOOT
 applyPreset('4t');
